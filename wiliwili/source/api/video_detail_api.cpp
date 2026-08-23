@@ -12,18 +12,18 @@ namespace bilibili {
 
 void BilibiliClient::get_video_detail(const std::string& bvid, const std::function<void(VideoDetailResult)>& callback,
                                       const ErrorCallback& error) {
-    HTTP::getResultAsync<VideoDetailResult>(Api::Detail, {{"bvid", bvid}}, callback, error);
+    HTTP::getResultWithWbiAsync<VideoDetailResult>(Api::Detail, {{"bvid", bvid}}, callback, error);
 }
 
 void BilibiliClient::get_video_detail(uint64_t aid, const std::function<void(VideoDetailResult)>& callback,
                                       const ErrorCallback& error) {
-    HTTP::getResultAsync<VideoDetailResult>(Api::Detail, {{"aid", std::to_string(aid)}}, callback, error);
+    HTTP::getResultWithWbiAsync<VideoDetailResult>(Api::Detail, {{"aid", std::to_string(aid)}}, callback, error);
 }
 
 void BilibiliClient::get_video_detail_all(const std::string& bvid,
                                           const std::function<void(VideoDetailAllResult)>& callback,
                                           const ErrorCallback& error) {
-    HTTP::getResultAsync<VideoDetailAllResult>(Api::DetailAll, {{"bvid", bvid}}, callback, error);
+    HTTP::getResultWithWbiAsync<VideoDetailAllResult>(Api::DetailAll, {{"bvid", bvid}}, callback, error);
 }
 
 void BilibiliClient::get_page_detail(uint64_t aid, uint64_t cid, const std::function<void(VideoPageResult)>& callback,
@@ -138,7 +138,7 @@ void BilibiliClient::get_video_url_cast(uint64_t oid, uint64_t cid, int type, in
 void BilibiliClient::get_comment(const std::string& oid, int next, int mode, int type,
                                  const std::function<void(VideoCommentResultWrapper)>& callback,
                                  const ErrorCallback& error) {
-    HTTP::getResultAsync<VideoCommentResultWrapper>(
+    HTTP::getResultWithWbiAsync<VideoCommentResultWrapper>(
         Api::Comment,
         {{"mode", std::to_string(mode)},
          {"next", std::to_string(next)},

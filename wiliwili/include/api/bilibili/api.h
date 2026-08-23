@@ -26,12 +26,12 @@ const std::string Nav = _apiBase + "/x/web-interface/nav";
 /// 视频详情. gRPC
 const std::string DetailGRPC = _grpcBase + "/bilibili.app.view.v1.View/View";
 /// 视频详情.
-const std::string Detail    = _apiBase + "/x/web-interface/view";
-const std::string DetailAll = _apiBase + "/x/web-interface/view/detail";
+const std::string Detail    = _apiBase + "/x/web-interface/wbi/view";
+const std::string DetailAll = _apiBase + "/x/web-interface/wbi/view/detail";
 /// 视频分P详情
 const std::string PageDetail = _apiBase + "/x/player/wbi/v2";
 /// 番剧详情.
-const std::string SeasonDetail = _apiBase + "/pgc/view/pc/season";
+const std::string SeasonDetail = _apiBase + "/pgc/view/web/season";
 /// 番剧推荐.
 const std::string SeasonRCMD = _apiBase + "/pgc/season/web/related/recommend";
 /// 番剧播放进度
@@ -74,7 +74,7 @@ const std::string UGCSeasonSubscribe = _apiBase + "/x/v3/season/fav";
 const std::string UGCSeasonUnsubscribe = _apiBase + "/x/v3/season/unfav";
 /// 一键三连.
 const std::string Triple    = _appBase + "/x/v2/view/like/triple";
-const std::string TripleWeb = _apiBase + "x/web-interface/archive/like/triple";
+const std::string TripleWeb = _apiBase + "/x/web-interface/archive/like/triple";
 /// 关注 取关
 const std::string Follow = _apiBase + "/x/relation/modify";
 /// 查询单个用户关系（是否关注等）
@@ -119,7 +119,7 @@ const std::string LiveAreaList = _liveBase + "/xlive/app-interface/v2/index/getA
 /// ===
 
 /// 主页 推荐
-const std::string Recommend = _apiBase + "/x/web-interface/index/top/feed/rcmd";
+const std::string Recommend = _apiBase + "/x/web-interface/wbi/index/top/feed/rcmd";
 /// 主页 热门 热门综合
 const std::string HotsAll = _apiBase + "/x/web-interface/popular";
 /// 主页 热门 每周推荐列表
@@ -145,7 +145,7 @@ const std::string PGCIndex = _apiBase + "/pgc/page/index/result";
 /// 主页 追番/影视 分类检索过滤器列表
 const std::string PGCIndexFilter = _apiBase + "/pgc/page/index/condition";
 /// 视频 评论
-const std::string Comment = _apiBase + "/x/v2/reply/main";
+const std::string Comment = _apiBase + "/x/v2/reply/wbi/main";
 /// 单条评论详情
 const std::string CommentDetail = _apiBase + "/x/v2/reply/detail";
 /// 点赞评论
@@ -177,7 +177,7 @@ const std::string CollectionList          = _apiBase + "/x/v3/fav/folder/created
 const std::string CollectionListAll       = _apiBase + "/x/v3/fav/folder/created/list-all";
 const std::string CollectionVideoList     = _apiBase + "/x/v3/fav/resource/list";
 const std::string CollectionVideoListSave = _apiBase + "/x/v3/fav/resource/deal";
-const std::string UserUploadedVideo       = _apiBase + "/x/space/arc/search";
+const std::string UserUploadedVideo       = _apiBase + "/x/space/wbi/arc/search";
 const std::string UserRelationStat        = _apiBase + "/x/relation/stat";
 const std::string MsgFeedLike             = _apiBase + "/x/msgfeed/like";
 const std::string MsgFeedAt               = _apiBase + "/x/msgfeed/at";
@@ -200,9 +200,9 @@ const std::string WatchLater = _apiBase + "/x/v2/history/toview/web";
 /// ===
 /// 搜索页API
 /// ===
-const std::string Search     = _apiBase + "/x/web-interface/search/type";
-const std::string TVSuggest  = _apiBase + "/x/tv/suggest";
-const std::string SearchHots = _apiBase + "/x/web-interface/search/square";
+const std::string Search     = _apiBase + "/x/web-interface/wbi/search/type";
+const std::string TVSuggest  = "https://s.search.bilibili.com/main/suggest";
+const std::string SearchHots = _apiBase + "/x/web-interface/wbi/search/square";
 
 /// ===
 /// 动态页API
