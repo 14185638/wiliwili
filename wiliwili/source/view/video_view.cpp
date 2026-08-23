@@ -90,22 +90,42 @@ VideoView::VideoView() {
     this->registerAction("\uE08F", brls::ControllerButton::BUTTON_LB, rewindFunc, false, true);
 
     // 快进
+        this->registerAction(
+            "\uE08E", brls::ControllerButton::BUTTON_RB,
+            [this](brls::View* view) -> bool {
+                CHECK_OSD(true);
+                auto& state  = brls::Application::getControllerState();
+                bool buttonY =
+                    brls::Application::isSwapInputKeys() ? state.buttons[brls::BUTTON_X] : state.buttons[brls::BUTTON_Y];
+                if (buttonY) {
+                    seeking_range -= getSeekRange(seeking_range);
+                } else {
+                    seeking_range += getSeekRange(seeking_range);
+                }
+                this->requestSeeking(seeking_range);
+                return true;
+            },
+            false, true);
+
+    // 遥控器独立的上/下键(PageUp/PageDown)：仅全屏时快退/快进；非全屏时让位给切 Tab
     this->registerAction(
-        "\uE08E", brls::ControllerButton::BUTTON_RB,
-        [this](brls::View* view) -> bool {
+        ShortcutHelper::getLast(), [this](...) -> bool {
+            if (!this->isFullscreen()) return false;
             CHECK_OSD(true);
-            auto& state  = brls::Application::getControllerState();
-            bool buttonY =
-                brls::Application::isSwapInputKeys() ? state.buttons[brls::BUTTON_X] : state.buttons[brls::BUTTON_Y];
-            if (buttonY) {
-                seeking_range -= getSeekRange(seeking_range);
-            } else {
-                seeking_range += getSeekRange(seeking_range);
-            }
+            seeking_range -= getSeekRange(seeking_range);
             this->requestSeeking(seeking_range);
             return true;
         },
-        false, true);
+        true);
+    this->registerAction(
+        ShortcutHelper::getNext(), [this](...) -> bool {
+            if (!this->isFullscreen()) return false;
+            CHECK_OSD(true);
+            seeking_range += getSeekRange(seeking_range);
+            this->requestSeeking(seeking_range);
+            return true;
+        },
+        true);
 
     // 显示隐藏 OSD
     auto osdFunc = [this](...) -> bool {
